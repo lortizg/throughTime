@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import ComponentsPillaPilla from './components/Pilla-pilla/Pilla-pilla'
+import Break from './components/Break/Break'
 
 function App() {
   let contador=0;
@@ -18,7 +19,7 @@ function App() {
     <div onClick={handlePillaPillaClick}>
       <ComponentsPillaPilla />
     </div>,
-    <p>Hola!</p>
+    <Break/>
   ];
 
   

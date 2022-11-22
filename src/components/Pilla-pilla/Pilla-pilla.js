@@ -17,11 +17,6 @@ function ComponentsPillaPilla() {
     const el2 = ref.current;
     el2.style.opacity=0;
     
-
-
-
-    
-
     setTimeout(()=>{
       let flip=Math.random() < 0.5;
       el2.style.transform="scaleX("+(flip?-1:1)+")";
