@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ComponentsPillaPilla from './components/Pilla-pilla/Pilla-pilla'
 
 function App() {
+  let contador=0;
+  const [currentRender, setCurrentRender] = useState(0);
+
+  const handlePillaPillaClick = () => {
+    contador++;
+    if(contador===3) {
+      setCurrentRender(1);
+    }
+  }
+
+
+  const COMPOONENTSTORENDER=[
+    <div onClick={handlePillaPillaClick}>
+      <ComponentsPillaPilla />
+    </div>,
+    <p>Hola!</p>
+  ];
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    COMPOONENTSTORENDER[currentRender]
   );
 }
 
