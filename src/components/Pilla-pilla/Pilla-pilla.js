@@ -27,11 +27,9 @@ function ComponentsPillaPilla() {
   };
 
   return (
-    // <div>
-      <div ref={ref} className={styles.container} onClick={handleClick} >
-        <img className={styles.image} src={imageSRC}/>
-      </div>
-    // </div>
+    <div ref={ref} className={styles.container} onClick={handleClick} >
+      <img className={styles.image} src={imageSRC}/>
+    </div>
   );
 }
 
