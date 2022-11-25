@@ -2,19 +2,23 @@ import React, { useState } from 'react';
 import './App.css';
 import ComponentsPillaPilla from './components/Pilla-pilla/Pilla-pilla'
 import Break from './components/Break/Break'
+import EdadMedia from './components/EdadMedia/EdadMedia'
+import Piratas from './components/Piratas/Piratas'
+import Espacio from './components/Espacio/Espacio'
+import Victoriano from './components/Espacio/Espacio'
 
+export const butterflyImage="/butterfly.webp";
 function App() {
-  // let contadorPillaPilla=0;
   const numPillaPilla=4;
   const numCracks=20;
-  const step=250;
+  const step=200;
   const [currentRender, setCurrentRender] = useState(0);
   const [contadorPillaPilla,setContadorPillaPilla] =useState(0);
 
   const handlePillaPillaClick = () => {
     setContadorPillaPilla(contadorPillaPilla + 1);
     if(contadorPillaPilla === numPillaPilla) {
-      setTimeout(()=>setCurrentRender(1),step*numCracks);
+      setTimeout(()=>setCurrentRender(1),step*(numCracks-2) );
     }
   }
 
@@ -22,10 +26,12 @@ function App() {
   const COMPONENTSTORENDER=[
     <div onClick={handlePillaPillaClick}>
       <ComponentsPillaPilla />
-      <p>{contadorPillaPilla}</p>
       {contadorPillaPilla>=numPillaPilla-1 && <Break numCracks={numCracks} step={step}/>}
     </div>,
-    <p>Hola</p>
+    <EdadMedia/>,
+    <Piratas/>,
+    <Espacio/>,
+    <Victoriano/>
   ];
 
   // return (<>
@@ -38,7 +44,8 @@ function App() {
   // </>)
   
   return (
-    COMPONENTSTORENDER[currentRender]
+    // COMPONENTSTORENDER[currentRender]
+    <EdadMedia/>
   );
 }
 

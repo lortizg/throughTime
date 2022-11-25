@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+.butterfly{
+  width:80px !important;
+  height: 80px !important;
+}

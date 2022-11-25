@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Pilla-pilla.module.scss';
 import {useRef} from 'react';
+import { butterflyImage } from '../../App';
 
 // function changeImagePosition(){
 
 // }
 
 function ComponentsPillaPilla() {
-  const imageSRC="https://png.monster/wp-content/uploads/2022/05/png.monster-851.png";
   const ref = useRef(null);
 
   const handleClick = () => {
@@ -28,14 +28,9 @@ function ComponentsPillaPilla() {
 
   return (
     <div ref={ref} className={styles.container} onClick={handleClick} >
-      <img className={styles.image} src={imageSRC}/>
+      <img className={styles.image} alt="" src={butterflyImage}/>
     </div>
   );
 }
-
-ComponentsPillaPilla.propTypes = {};
-
-ComponentsPillaPilla.defaultProps = {};
-
 
 export default ComponentsPillaPilla;
