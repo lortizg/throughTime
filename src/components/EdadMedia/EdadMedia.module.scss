@@ -27,11 +27,36 @@
         transition: opacity 0.25s;
         position: fixed;
         bottom: 7%;
+        img{
+            max-height: 100%;
+            min-height: 100%;
+            max-width: 100%;
+            position: fixed;
+            bottom: 0%;
+            z-index: 0;
+        }
         p{
             color: white;
             background: #262626ad;
             padding: 30px;
+            position: relative;
+            z-index: 3;
             font-size: large;
+            text-align: center;
+        }
+    }
+
+    .options{
+        position: absolute;
+        li{
+            list-style: none;
+        }
+        p{
+            background-color: #000000e3;
+            padding: 16px;
+            border-radius: 14px;
+            width: 45vw;
+            text-align: center;
         }
     }
 
