@@ -8,6 +8,9 @@ const  IMAGES = {
   castillo:'https://mobimg.b-cdn.net/v3/fetch/1c/1c4d7ba0eb22194f5c66d0ccb1272c45.jpeg',
   mercado:'/market.jpg',
   cervecera:'/cervecera.webp',
+  guardia:'/guardia.webp',
+  lio:'/lio.webp',
+  amnis:'/amnis.png'
 }
 
 const dialogs=[
@@ -55,8 +58,14 @@ const dialogs=[
   {character: 'narrator', desc:'Un objeto rectangular y pesado, impreso, con folios. No consigues distinguir la imagen impresa en su portada'},
   {character: 'narrator', desc:'¿Es eso un... libro?'},
   {character: 'narrator', desc:'Un libro común'},
-  {character: 'narrator', desc:'Cuanto más lo miras, más reconoces que es un libro'},
+  {character: 'narrator', desc:'Cuanto más lo miras, más reconoces que es un libro'}, //40
   {character: 'narrator', desc:'¿Qué hace un libro aquí?'},
+
+  {character:'narrator', desc:'Disculpe'},
+  {character:'guardia', desc:'¡Disculpe!'},
+  {character:'guardia', desc:'Disculpe, señorita... ¿Qué hombre es su tutor?'},
+  {character:'amnis', desc:'Esta dama está bajo mi cuidado. ¿Qué desea?'},
+  {character:'lio', desc:'La dama con la que habla es mi esposa. Le sugiero tratarla con respeto'},
 ]
 
 
@@ -64,12 +73,13 @@ function EdadMedia () {
   const butterfly = useRef(null);
   const imagenEntrecortada= useRef(null);
   const [backgroundImage,setBackgroundImage] = useState(IMAGES.castillo);
-  const [option, setOption] = useState(null);
+  // const [option, setOption] = useState(0);
 
   const [dialog,setDialog] = useState({position:0, character:dialogs[0].character, desc:dialogs[0].desc});
 
   const [active, setActive] = useState(false);
   const [choosing, setChoosing] = useState(false);
+  const [choosingMain, setChoosingMain] = useState(false);
   const [hoguera, setHoguera]= useState(false);
 
 
@@ -94,7 +104,7 @@ function EdadMedia () {
 
 
   function handleClick(){
-    if(dialog.position<dialogs.length-1 && !choosing && !hoguera){
+    if(dialog.position<dialogs.length-1 && !choosing && !hoguera && !choosingMain){
       nextDialog();
     }
     switch(dialog.position){
@@ -111,8 +121,14 @@ function EdadMedia () {
       case 17:
         setBackgroundImage(IMAGES.mercado);
         break;
-      case 31:
+      case 27:
+        setChoosingMain(true);
+        break;
+      case 30:
         setDialog({position:34,character:dialogs[34].character, desc:dialogs[34].desc});
+        break;
+      case 39:
+        handleImagenEntrecortada();
         break;
       
       default:break;
@@ -120,23 +136,27 @@ function EdadMedia () {
   }
 
   function chooseDress(option) {
-    setOption(option);
+    // setOption(option);
+    console.log(option);
     setChoosing(false);
     nextDialog();
-    handleImagenEntrecortada();
+    handleImagenEntrecortada(option);
   };
 
   const handleMainCharacterOptions = event => {
     const chosen = dialog.options.indexOf(event.target.textContent);
+    console.log(chosen,chosen===0, event.target.textContent);
+
     switch(dialog.position){
-      case 29:
-        setDialog({position:chosen===0?30:32,character:dialogs[chosen===0?30:32].character, desc:dialogs[chosen===0?30:32].desc});
+      case 28:
+        nextDialog(chosen===0? 1:3); 
         break;
       default: break;
     }
+    setChoosingMain(false);
   };
 
-  function handleImagenEntrecortada(){
+  function handleImagenEntrecortada(op){
     setHoguera(true);
 
     setTimeout(()=>{
@@ -149,7 +169,10 @@ function EdadMedia () {
 
     setTimeout(()=>{
       setHoguera(false);
-      setDialog({position:(option===0?6:9),character:dialogs[option===0?6:9].character, desc:dialogs[option===0?6:9].desc});
+      console.log(op);
+      if(dialog.position===4){
+        nextDialog(op===0? 2:5); 
+      }
     },1000);
   }
 
