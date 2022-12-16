@@ -64,8 +64,13 @@ const dialogs=[
   {character:'narrator', desc:'Disculpe'},
   {character:'guardia', desc:'¡Disculpe!'},
   {character:'guardia', desc:'Disculpe, señorita... ¿Qué hombre es su tutor?'},
-  {character:'amnis', desc:'Esta dama está bajo mi cuidado. ¿Qué desea?'},
-  {character:'lio', desc:'La dama con la que habla es mi esposa. Le sugiero tratarla con respeto'},
+  {character:'narrator', desc:'Esta dama está bajo mi cuidado. ¿Qué desea?'},
+  {character:'narrator', desc: 'Ante ti encuentras un hombre alto de largos cabellos negros, vestido en ropas oscuras. Sus ojos violetas te dejan bastante claro de quién se trata'},
+
+  
+  {character: 'narrator', desc:'La dama con la que habla es mi esposa. Le sugiero tratarla con respeto'},
+  {character: 'narrator',desc:'Un hombre de cabellos ondulados, rojos como el fuego y vestido en ropas caballerizas se acerca hasta ti. Al alzar la mirada ves su expresión decidida'},
+
 ]
 
 
@@ -76,6 +81,8 @@ function EdadMedia () {
   // const [option, setOption] = useState(0);
 
   const [dialog,setDialog] = useState({position:0, character:dialogs[0].character, desc:dialogs[0].desc});
+  // const [dialog,setDialog] = useState({position:34, character:dialogs[34].character, desc:dialogs[34].desc});
+
 
   const [active, setActive] = useState(false);
   const [choosing, setChoosing] = useState(false);
@@ -84,13 +91,15 @@ function EdadMedia () {
 
 
   useEffect(() => {
-      setTimeout(()=>{
-        butterfly.current.style.opacity=1;
-        setActive(true);
-      },2000)
+      // setTimeout(()=>{
+      //   butterfly.current.style.opacity=1;
+      //   setActive(true);
+      // },2000)
       
       setTimeout(()=>{
-        setDialog({position:1,character:dialogs[1].character, desc:dialogs[1].desc});
+        // setDialog({position:1,character:dialogs[1].character, desc:dialogs[1].desc});
+        setDialog({position:34, character:dialogs[34].character, desc:dialogs[34].desc});
+
       },3000)
     
 
@@ -127,7 +136,7 @@ function EdadMedia () {
       case 30:
         setDialog({position:34,character:dialogs[34].character, desc:dialogs[34].desc});
         break;
-      case 39:
+      case 40:
         handleImagenEntrecortada();
         break;
       
@@ -169,9 +178,12 @@ function EdadMedia () {
 
     setTimeout(()=>{
       setHoguera(false);
-      console.log(op);
+      console.log(dialog.position);
       if(dialog.position===4){
         nextDialog(op===0? 2:5); 
+      }
+      if(dialog.position === 40){
+        nextDialog(2); 
       }
     },1000);
   }
