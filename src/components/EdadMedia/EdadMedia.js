@@ -91,14 +91,14 @@ function EdadMedia () {
 
 
   useEffect(() => {
-      // setTimeout(()=>{
-      //   butterfly.current.style.opacity=1;
-      //   setActive(true);
-      // },2000)
+      setTimeout(()=>{
+        butterfly.current.style.opacity=1;
+        setActive(true);
+      },2000)
       
       setTimeout(()=>{
-        // setDialog({position:1,character:dialogs[1].character, desc:dialogs[1].desc});
-        setDialog({position:34, character:dialogs[34].character, desc:dialogs[34].desc});
+        setDialog({position:1,character:dialogs[1].character, desc:dialogs[1].desc});
+        // setDialog({position:34, character:dialogs[34].character, desc:dialogs[34].desc});
 
       },3000)
     
