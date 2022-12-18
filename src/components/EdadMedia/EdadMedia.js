@@ -251,5 +251,4 @@ function EdadMedia () {
   );
 };
 
-
 export default EdadMedia;
