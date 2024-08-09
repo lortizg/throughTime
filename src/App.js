@@ -3,9 +3,9 @@ import './App.css';
 import ComponentsPillaPilla from './components/Pilla-pilla/Pilla-pilla'
 import Break from './components/Break/Break'
 import EdadMedia from './components/EdadMedia/EdadMedia'
-import Piratas from './components/Piratas/Piratas'
-import Espacio from './components/Espacio/Espacio'
-import Victoriano from './components/Espacio/Espacio'
+// import Piratas from './components/Piratas/Piratas'
+// import Espacio from './components/Espacio/Espacio'
+// import Victoriano from './components/Espacio/Espacio'
 
 export const butterflyImage="/butterfly.webp";
 function App() {
@@ -28,24 +28,12 @@ function App() {
       <ComponentsPillaPilla />
       {contadorPillaPilla>=numPillaPilla-1 && <Break numCracks={numCracks} step={step}/>}
     </div>,
-    <EdadMedia/>,
-    <Piratas/>,
-    <Espacio/>,
-    <Victoriano/>
+    <EdadMedia/>
   ];
-
-  // return (<>
-  //   {contadorPillaPilla < numPillaPilla && <div onClick={handlePillaPillaClick}>
-  //     <ComponentsPillaPilla />
-  //     <p>{contadorPillaPilla}</p>
-  //     <Break disabled={contadorPillaPilla < numPillaPilla-2}/>
-  //   </div>}
-  //   {contadorPillaPilla >= numPillaPilla && <p>Hola</p>}
-  // </>)
   
   return (
-    // COMPONENTSTORENDER[currentRender]
-    <EdadMedia/>
+    // <EdadMedia></EdadMedia>
+    COMPONENTSTORENDER[currentRender]
   );
 }
 
